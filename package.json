@@ -1,0 +1,31 @@
+{
+  "name": "@honeo/sleep",
+  "version": "1.0.0",
+  "description": "よくあるPromiseなsleep関数",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "npm update && cd ./test && node --experimental-modules index.mjs"
+  },
+  "author": "honeo",
+  "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "sleep",
+    "promise",
+    "esm"
+  ],
+  "devDependencies": {
+    "@honeo/test": "^3.1.1"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/honeo/sleep.git"
+  },
+  "bugs": {
+    "url": "https://github.com/honeo/sleep/issues"
+  },
+  "homepage": "https://github.com/honeo/sleep#readme"
+}
