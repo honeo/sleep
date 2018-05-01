@@ -14,7 +14,12 @@ $ npm i @honeo/sleep
 ```js
 import sleep from '@honeo/sleep';
 
-sleep(1000, 'foobar').then( (arg)=>{
+// or Dynamic import, CDN
+const sleep = await import('https://cdn.rawgit.com/honeo/sleep/master/index.mjs').then( (mod)=>{
+	return mod.default;
+});
+
+await sleep(1000).then( (arg)=>{
 	console.log(arg); // after 1sec "foobar"
 });
 ```
