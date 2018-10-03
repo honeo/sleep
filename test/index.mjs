@@ -44,6 +44,25 @@ test([
 		return date_before+100 <= Date.now() && str==='foobar';
 	},
 
+	// validation機能確認
+	async function(){
+		try{
+			return sleep('hoge');
+			return false;
+		}catch(e){
+			return true;
+		}
+	},
+
+	async function(){
+		try{
+			return sleep(-1);
+			return false;
+		}catch(e){
+			return true;
+		}
+	},
+
 	// Prototype拡張
 	async function(){
 		const date_before = Date.now();
