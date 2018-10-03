@@ -12,8 +12,8 @@
 function sleep(ms, arg){
 
 	// validation
-	if( typeof ms!=='number' ){
-		throw new TypeError('Invalid arguments');
+	if( typeof ms!=='number' || ms<0 ){
+		throw new TypeError(`Invalid arguments: ${ms}`);
 	}
 
 	return new Promise( (resolve)=>{
