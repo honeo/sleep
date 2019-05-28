@@ -4,10 +4,9 @@
 	引数
 		1: number
 			待機するms
-		2~: anything
+		2: any
 	返り値
-		promise
-			引数2~がそのまま渡される。
+		promise<arg2>
 */
 function sleep(ms, arg){
 
