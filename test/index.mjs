@@ -2,8 +2,6 @@
 	Test
 */
 
-// register, nodeがDynamicImport対応したら切り替える
-import '../register.mjs';
 
 // Mod
 import sleep from '../index.mjs';
@@ -63,8 +61,17 @@ test([
 		}
 	},
 
+
+	// dynamic-import
+	async function(){
+		const {default: sleep} = await import('../index.mjs');
+		return typeof sleep==='function';
+	},
+
 	// Prototype拡張
 	async function(){
+		await import('../register.mjs');
+
 		const date_before = Date.now();
 		return Promise.resolve()
 			.sleep(100)
