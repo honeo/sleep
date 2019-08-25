@@ -4,9 +4,8 @@
 
 
 // Mod
-import sleep from '../index.mjs';
-import test from '@honeo/test';
-import json from '../package.json';
+const test = require('@honeo/test');
+const json = require('../package.json');
 console.log(`${json.name} v${json.version}: test`);
 
 
@@ -16,6 +15,7 @@ test([
 
 	// 指定時間が経過できているか
 	async function(){
+		const {default: sleep} = await import('../index.mjs');
 		const date_before = Date.now();
 		await sleep(100);
 		return date_before+100 <= Date.now();
@@ -23,6 +23,7 @@ test([
 
 	// その２
 	async function(){
+		const {default: sleep} = await import('../index.mjs');
 		const date_before = Date.now();
 		await sleep(500);
 		return date_before+500 <= Date.now();
@@ -30,6 +31,7 @@ test([
 
 	// その３
 	async function(){
+		const {default: sleep} = await import('../index.mjs');
 		const date_before = Date.now();
 		await sleep(1000);
 		return date_before+1000 <= Date.now();
@@ -37,6 +39,7 @@ test([
 
 	// 引数渡しチェック
 	async function(){
+		const {default: sleep} = await import('../index.mjs');
 		const date_before = Date.now();
 		const str = await sleep(100, 'foobar');
 		return date_before+100 <= Date.now() && str==='foobar';
@@ -44,6 +47,7 @@ test([
 
 	// validation機能確認
 	async function(){
+		const {default: sleep} = await import('../index.mjs');
 		try{
 			return sleep('hoge');
 			return false;
@@ -53,6 +57,7 @@ test([
 	},
 
 	async function(){
+		const {default: sleep} = await import('../index.mjs');
 		try{
 			return sleep(-1);
 			return false;
@@ -62,11 +67,6 @@ test([
 	},
 
 
-	// dynamic-import
-	async function(){
-		const {default: sleep} = await import('../index.mjs');
-		return typeof sleep==='function';
-	},
 
 	// Prototype拡張
 	async function(){
@@ -78,7 +78,14 @@ test([
 			.then( (arg)=>{
 				return date_before+100 <= Date.now();
 			});
+	},
+
+	// CJS
+	async function(){
+		const sleep_cjs = require('../CJS/index.cjs');
+		return typeof sleep_cjs==='function';
 	}
+
 ], {
 	exit: true
 });

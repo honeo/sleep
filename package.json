@@ -2,9 +2,10 @@
   "name": "@honeo/sleep",
   "version": "1.0.2",
   "description": "よくあるPromiseなsleep関数",
-  "main": "index.mjs",
+  "main": "./index.mjs",
   "scripts": {
-    "test": "npm update && cd ./test && node --experimental-modules index.mjs"
+    "build": "babel index.mjs -o ./CJS/index.cjs && babel register.mjs -o ./CJS/register.cjs",
+    "test": "npm update && npm run build && cd ./test && node --experimental-modules index.js"
   },
   "author": "honeo",
   "license": "MIT",
@@ -17,7 +18,11 @@
     "esm"
   ],
   "devDependencies": {
-    "@honeo/test": "^3.3.0"
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@honeo/test": "^3.3.0",
+    "babel-plugin-add-module-exports": "^1.0.2"
   },
   "dependencies": {},
   "repository": {

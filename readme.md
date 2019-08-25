@@ -12,10 +12,15 @@
 $ npm i @honeo/sleep
 ```
 ```js
+// ESM
 import sleep from '@honeo/sleep';
 
-// or Dynamic import, CDN
+// CJS
+const sleep = require('@honeo/sleep/CJS/index.cjs');
+
+// Dynamic import & CDN
 const {default: sleep} = await import('https://raw.githack.com/honeo/sleep/master/index.mjs');
+
 
 await sleep(1000, 'foobar').then( (arg)=>{
 	console.log(arg); // after 1sec "foobar"
