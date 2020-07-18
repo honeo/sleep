@@ -8,3 +8,5 @@
 ## devDependencies
 * @honeo/test
 	- テスト用モジュール。
+* @babel/*, babel-*
+	- CJS変換。
