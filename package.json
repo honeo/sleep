@@ -4,8 +4,7 @@
   "description": "よくあるPromiseなsleep関数",
   "main": "./index.mjs",
   "scripts": {
-    "build": "babel index.mjs -o ./CJS/index.cjs && babel register.mjs -o ./CJS/register.cjs",
-    "test": "npm update && npm run build && cd ./test && node --experimental-modules index.js"
+    "test": "node --experimental-json-modules ./test/index.mjs"
   },
   "author": "honeo",
   "license": "MIT",
@@ -17,14 +16,6 @@
     "promise",
     "esm"
   ],
-  "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@honeo/test": "^3.3.0",
-    "babel-plugin-add-module-exports": "^1.0.2"
-  },
-  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/honeo/sleep.git"
@@ -32,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/honeo/sleep/issues"
   },
-  "homepage": "https://github.com/honeo/sleep#readme"
+  "homepage": "https://github.com/honeo/sleep#readme",
+  "dependencies": {
+    "@honeo/check": "^2.6.0"
+  }
 }

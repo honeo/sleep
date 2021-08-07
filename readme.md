@@ -1,5 +1,5 @@
 # sleep
-* [honeo/sleep](https://github.com/honeo/sleep)  
+* [honeo/sleep](https://github.com/honeo/sleep)
 * [@honeo/sleep](https://www.npmjs.com/package/@honeo/sleep)
 
 
@@ -15,9 +15,6 @@ $ npm i @honeo/sleep
 // ESM
 import sleep from '@honeo/sleep';
 
-// CJS
-const sleep = require('@honeo/sleep/CJS/index.cjs');
-
 // Dynamic import & CDN
 const {default: sleep} = await import('https://raw.githack.com/honeo/sleep/master/index.mjs');
 
@@ -27,14 +24,38 @@ await sleep(1000, 'foobar').then( (arg)=>{
 });
 ```
 
-## Prototype拡張
-ご利用は計画的に。
-```js
-import '@honeo/sleep/register';
+## API
 
-Promise.resolve()
-	.sleep(1000)
-	.then()
-	.catch()
-	.finnaly();
+### sleep([ms [, arg [, options]]])
+```js
+// 1sec
+await sleep(1000);
+
+// promise<"foo">
+await sleep(1000, 'foo');
+
+// AbortController
+await sleep(1000, 'bar', {
+	signal: new AbortController().signal
+}).catch( (err)=>{
+	console.log(err.text); // "sleep: aborted"
+});
+
+
+// default options
+sleep(1);
 ```
+
+
+## Breaking Changes
+
+### v2
+
+#### CommonJS
+廃止。
+
+#### sleep()
+引数1にdefault値を設定。
+
+#### register (Promise.prototype.sleep)
+廃止。
