@@ -42,8 +42,16 @@ await sleep(1000, 'bar', {
 });
 
 
-// default options
-sleep(1);
+// very fucking bad
+sleep(1000, null, {
+	sync: true
+});
+
+
+// default
+sleep(1, undefined, {
+	sync: false
+});
 ```
 
 
