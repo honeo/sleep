@@ -38,7 +38,7 @@ await sleep(1000, 'foo');
 await sleep(1000, 'bar', {
 	signal: new AbortController().signal
 }).catch( (err)=>{
-	console.log(err.text); // "sleep: aborted"
+	console.log(err.message); // "sleep: aborted"
 });
 
 
