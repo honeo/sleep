@@ -76,6 +76,18 @@ import sleep from '../index.mjs';
 }
 
 
+// date
+{
+	const num_startMs = Date.now();
+	const date_after1s = new Date(Date.now()+1000);
+	await sleep(date_after1s);
+	if( num_startMs+1000 <= Date.now() ){
+
+	}else{
+		throw new Error('wait date 1000ms: failed');
+	}
+}
+
 // sync
 {
 	const num_startMs = Date.now();

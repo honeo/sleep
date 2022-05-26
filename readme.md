@@ -26,7 +26,7 @@ await sleep(1000, 'foobar').then( (arg)=>{
 
 ## API
 
-### sleep([ms [, arg [, options]]])
+### sleep([ms|date [, arg [, options]]])
 ```js
 // 1sec
 await sleep(1000);
@@ -41,6 +41,9 @@ await sleep(1000, 'bar', {
 	console.log(err.message); // "sleep: aborted"
 });
 
+// date
+const date_after1s = new Date(Date.now()+1000);
+await sleep(date_after1s);
 
 // very fucking bad
 sleep(1000, null, {

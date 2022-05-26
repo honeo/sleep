@@ -6,8 +6,8 @@ import {is, not, any} from '@honeo/check';
 	引数msの間待ってresolveするpromiseを返す。
 
 		引数
-			1: op, number
-				待機するms
+			1: op, number | date
+				待機するms or 目標時間。
 				default: 1
 			2: op, any
 			3: op, object
@@ -15,6 +15,13 @@ import {is, not, any} from '@honeo/check';
 			promise<arg2>
 */
 function sleep(num_delayMs=1, any, _options={}){
+
+	// arg1がdateならmsに書き換え
+	if( is.date(num_delayMs) ){
+		const num_nowMs = Date.now();
+		const num_afterMs = num_delayMs.getTime();
+		num_delayMs = num_afterMs - num_nowMs;
+	}
 
 	// validation
 	if( not.num(num_delayMs) ){
